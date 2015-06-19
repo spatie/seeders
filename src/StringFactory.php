@@ -13,7 +13,7 @@ class StringFactory extends Factory
 
         return $hasDescription && $hasContents;
     }
-    
+
     protected function initialize($model, $data, $carry)
     {
         $model->name = implode('.', $carry);
@@ -40,7 +40,7 @@ class StringFactory extends Factory
         foreach (config('app.locales') as $locale) {
             $values[$locale] = $value;
         }
-        
+
         $this->setText($model, $values);
     }
 
@@ -56,7 +56,7 @@ class StringFactory extends Factory
             $defaultTranslation = $value;
         }
 
-        foreach($translations as $locale => $translation) {
+        foreach ($translations as $locale => $translation) {
             $model->translate($locale)->text = $translation ?: "$defaultTranslation $locale";
         }
     }
