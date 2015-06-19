@@ -62,6 +62,8 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
+     * Truncate the given tables
+     *
      * @param  string $tables,...
      */
     protected function truncate(...$tables)
@@ -73,6 +75,30 @@ class DatabaseSeeder extends Seeder
         }
         
         DB::statement("SET FOREIGN_KEY_CHECKS=1");
+    }
+
+    /**
+     * Truncate all tables
+     */
+    protected function truncateAllTables()
+    {
+        $this->truncate($this->getAllTableNames());
+    }
+
+    /**
+     * Get the names of all tables
+     *
+     * @return array
+     */
+    protected function getAllTableNames()
+    {
+        $query = sprintf('SELECT TABLE_NAME as name FROM information_schema.tables WHERE table_schema="%s"', DB::connection()->getDatabaseName());
+
+        $tableNames = array_map(function($rawResult) {
+            return $rawResult->name;
+        },DB::select($query));
+
+        return $tableNames;
     }
 
     protected function createTemporaryImageDirectory()
@@ -90,6 +116,8 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
+     * Add images to the given model.
+     *
      * @param  \Spatie\MediaLibrary\MediaLibraryModel\MediaLibraryModelInterface $model
      * @param  int $minAmount
      * @param  int $maxAmount
