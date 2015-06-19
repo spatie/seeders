@@ -1,7 +1,10 @@
 <?php
 
+namespace Spatie\Seeders;
+
 use Faker\Factory;
 use DB;
+use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Spatie\MediaLibrary\MediaLibraryModel\MediaLibraryModelInterface;
@@ -21,16 +24,10 @@ class DatabaseSeeder extends Seeder
      */
     protected $faker;
 
-    /**
-     * @var array
-     */
-    protected $seeders;
-
     public function __construct()
     {
         $this->tempImageDir = storage_path() . '/tempSeeder';
         $this->faker        = Factory::create();
-        $this->seeders      = [];
     }
 
     /**
@@ -49,10 +46,6 @@ class DatabaseSeeder extends Seeder
         if (app()->environment() == 'local') {
             $this->clearMediaDirectory();
         }
-
-        foreach ($this->seeders as $seeder) {
-            $this->call($seeder);
-        }
     }
 
     /**
@@ -63,7 +56,7 @@ class DatabaseSeeder extends Seeder
     {
         $superSeeder = new SuperSeeder($factory);
 
-        $file = __DIR__."/data/$filename.yml";
+        $file = base_path("database/seeds/data/$filename.yml");
 
         return $superSeeder->seedFromFile($file, new YamlParser);
     }
