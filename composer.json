@@ -1,0 +1,37 @@
+{
+    "name": "spatie/seeders",
+    "description": "Base seeders for our laravel applications",
+    "keywords": [
+        "spatie",
+        "seeders"
+    ],
+    "homepage": "https://github.com/spatie-custom/seeders",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
+        },
+        {
+            "name": "Sebastian De Deyne",
+            "email": "sebastian@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.5.0",
+        "spatie/laravel-superseeder": "^0.1.0",
+        "spatie/laravel-medialibrary": "^1.5",
+        "illuminate/database": "4.0 - 5.1",
+        "illuminate/support": "4.0 - 5.1",
+        "fzaninotto/faker": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spatie\\Seeders\\": "src"
+        }
+    }
+}
