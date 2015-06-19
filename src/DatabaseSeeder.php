@@ -26,12 +26,12 @@ class DatabaseSeeder extends Seeder
 
     public function __construct()
     {
-        $this->tempImageDir = storage_path() . '/tempSeeder';
-        $this->faker        = Factory::create();
+        $this->tempImageDir = storage_path().'/tempSeeder';
+        $this->faker = Factory::create();
     }
 
     /**
-     * Run the seeds
+     * Run the seeds.
      */
     public function run()
     {
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
 
         Model::unguard();
 
-        $this->truncate((new Media)->getTable());
+        $this->truncate((new Media())->getTable());
 
         $this->createTemporaryImageDirectory();
 
@@ -49,8 +49,8 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
-     * @param  \Spatie\SuperSeeder\Factory $factory
-     * @param  string $filename
+     * @param \Spatie\SuperSeeder\Factory $factory
+     * @param string                      $filename
      */
     protected function superSeeder($factory, $filename)
     {
@@ -58,27 +58,27 @@ class DatabaseSeeder extends Seeder
 
         $file = base_path("database/seeds/data/$filename.yml");
 
-        return $superSeeder->seedFromFile($file, new YamlParser);
+        return $superSeeder->seedFromFile($file, new YamlParser());
     }
 
     /**
-     * Truncate the given tables
+     * Truncate the given tables.
      *
-     * @param  string $tables,...
+     * @param string $tables,...
      */
     protected function truncate(...$tables)
     {
-        DB::statement("SET FOREIGN_KEY_CHECKS=0");
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
-        foreach($tables as $table) {
+        foreach ($tables as $table) {
             DB::table($table)->truncate();
         }
-        
-        DB::statement("SET FOREIGN_KEY_CHECKS=1");
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
     }
 
     /**
-     * Truncate all tables
+     * Truncate all tables.
      */
     protected function truncateAllTables()
     {
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
-     * Get the names of all tables
+     * Get the names of all tables.
      *
      * @return array
      */
@@ -94,9 +94,9 @@ class DatabaseSeeder extends Seeder
     {
         $query = sprintf('SELECT TABLE_NAME as name FROM information_schema.tables WHERE table_schema="%s"', DB::connection()->getDatabaseName());
 
-        $tableNames = array_map(function($rawResult) {
+        $tableNames = array_map(function ($rawResult) {
             return $rawResult->name;
-        },DB::select($query));
+        }, DB::select($query));
 
         return $tableNames;
     }
@@ -118,9 +118,9 @@ class DatabaseSeeder extends Seeder
     /**
      * Add images to the given model.
      *
-     * @param  \Spatie\MediaLibrary\MediaLibraryModel\MediaLibraryModelInterface $model
-     * @param  int $minAmount
-     * @param  int $maxAmount
+     * @param \Spatie\MediaLibrary\MediaLibraryModel\MediaLibraryModelInterface $model
+     * @param int                                                               $minAmount
+     * @param int                                                               $maxAmount
      */
     protected function addImages(MediaLibraryModelInterface $model, $minAmount = 1, $maxAmount = 3)
     {

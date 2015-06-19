@@ -10,7 +10,7 @@ class StringSeeder extends DatabaseSeeder
 {
     public function run()
     {
-        $this->truncate((new StringTranslation)->getTable(), (new String)->getTable());
+        $this->truncate((new StringTranslation())->getTable(), (new String())->getTable());
 
         $this->superSeeder(new StringFactory(String::class), 'strings');
 
