@@ -1,6 +1,6 @@
 # Seeders
 
-[![Latest Version on Packagist](https://img.shields.io/github/release/spatie-custom/seeders.svg?style=flat-square)](https://packagist.org/packages/spatie-custom/seeders)
+[![Latest Version on GitHub](https://img.shields.io/github/release/spatie-custom/seeders.svg?style=flat-square)](https://packagist.org/packages/spatie-custom/seeders)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/a4598de5-b087-4af3-b249-60df4189a09f.svg?style=flat-square)](https://insight.sensiolabs.com/projects/a4598de5-b087-4af3-b249-60df4189a09f)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie-custom/seeders.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie-custom/seeders)
