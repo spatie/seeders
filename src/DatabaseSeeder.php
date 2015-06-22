@@ -103,7 +103,8 @@ class DatabaseSeeder extends Seeder
     {
         $query = sprintf('SELECT TABLE_NAME as name FROM information_schema.tables WHERE table_schema="%s"', DB::connection()->getDatabaseName());
 
-        $tableNames = array_map(function ($rawResult) {
+
+        $tableNames = array_map(function(\stdClass $rawResult) {
             return $rawResult->name;
         }, DB::select($query));
 
