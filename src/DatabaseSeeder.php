@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
 
         Model::unguard();
 
-        // $this->truncate((new Media())->getTable());
+        $this->truncate((new Media())->getTable());
 
         $this->createTemporaryImageDirectory();
 
