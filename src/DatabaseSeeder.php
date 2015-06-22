@@ -2,11 +2,12 @@
 
 namespace Spatie\Seeders;
 
-use Faker\Factory;
 use DB;
+use Faker\Factory;
 use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\MediaLibraryModel\MediaLibraryModelInterface;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\SuperSeeder\Parsers\YamlParser;
@@ -44,7 +45,7 @@ class DatabaseSeeder extends Seeder
 
         Model::unguard();
 
-        $this->truncate((new Media())->getTable());
+        // $this->truncate((new Media())->getTable());
 
         $this->createTemporaryImageDirectory();
 
@@ -84,33 +85,33 @@ class DatabaseSeeder extends Seeder
 
     /**
      * Truncate all tables.
-     * 
-     * @param string $exclude,...
      */
     protected function truncateAllTables()
     {
-        $this->truncate($this->getAllTableNames($this->excludeWhenTruncatingAll));
+        $this->truncate(...$this->getAllTableNames($this->excludeWhenTruncatingAll));
     }
 
     /**
      * Get the names of all tables.
      *
-     * @param string $exclude,...
+     * @param array $exclude
      * 
      * @return array
      */
     protected function getAllTableNames($exclude = [])
     {
-        $query = sprintf('SELECT TABLE_NAME as name FROM information_schema.tables WHERE table_schema="%s"', DB::connection()->getDatabaseName());
+        $query = sprintf('SELECT TABLE_NAME as name FROM information_schema.tables WHERE table_schema="%s"',
+            DB::connection()->getDatabaseName());
 
-
-        $tableNames = array_map(function(\stdClass $rawResult) {
-            return $rawResult->name;
-        }, DB::select($query));
-
-        $tableNames = array_filter($tableNames, function ($tableName) {
-            return !in_array($tableName, $this->excludeWhenTruncatingAll);
-        });
+        $tableNames = Collection::make(DB::select($query))
+            ->map(function(\stdClass $rawResult) {
+                return $rawResult->name;
+            })
+            ->filter(function ($tableName) {
+                return !in_array($tableName, $this->excludeWhenTruncatingAll);
+            })
+            ->toArray()
+        ;
 
         return $tableNames;
     }
