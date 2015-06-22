@@ -24,6 +24,11 @@ class DatabaseSeeder extends Seeder
      */
     protected $faker;
 
+    /**
+     * @var array
+     */
+    protected $excludeWhenTruncatingAll = ['migrations'];
+
     public function __construct()
     {
         $this->tempImageDir = storage_path().'/tempSeeder';
@@ -43,7 +48,7 @@ class DatabaseSeeder extends Seeder
 
         $this->createTemporaryImageDirectory();
 
-        if (app()->environment() == 'local') {
+        if (app()->environment() === 'local') {
             $this->clearMediaDirectory();
         }
     }
@@ -79,24 +84,32 @@ class DatabaseSeeder extends Seeder
 
     /**
      * Truncate all tables.
+     * 
+     * @param string $exclude,...
      */
     protected function truncateAllTables()
     {
-        $this->truncate($this->getAllTableNames());
+        $this->truncate($this->getAllTableNames($this->excludeWhenTruncatingAll));
     }
 
     /**
      * Get the names of all tables.
      *
+     * @param string $exclude,...
+     * 
      * @return array
      */
-    protected function getAllTableNames()
+    protected function getAllTableNames($exclude = [])
     {
         $query = sprintf('SELECT TABLE_NAME as name FROM information_schema.tables WHERE table_schema="%s"', DB::connection()->getDatabaseName());
 
         $tableNames = array_map(function ($rawResult) {
             return $rawResult->name;
         }, DB::select($query));
+
+        $tableNames = array_filter($tableNames, function ($tableName) {
+            return !in_array($tableName, $this->excludeWhenTruncatingAll);
+        });
 
         return $tableNames;
     }
