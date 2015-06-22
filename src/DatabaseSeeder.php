@@ -143,4 +143,15 @@ class DatabaseSeeder extends Seeder
             $model->addMedia($this->faker->image($this->tempImageDir, 640, 480), 'images', false, false);
         }
     }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $model Should use \Dimsav\Translatable\Translatable trait
+     */
+    protected function addTranslations($model)
+    {
+        foreach (config('app.locales') as $locale) {
+            $translation = factory($model->getTranslationModelName())->make(['locale' => $locale]);
+            $model->translations()->save($translation);
+        }
+    }
 }
