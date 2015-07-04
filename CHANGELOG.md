@@ -2,7 +2,7 @@
 
 All Notable changes to `seeders` will be documented in this file
 
-## 1.2.1
+## 1.2.2
 - Marked v2 of laravel-medialibrary as a valid dependency
 
 ## 1.2.0
