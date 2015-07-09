@@ -8,8 +8,8 @@ use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
-use Spatie\MediaLibrary\MediaLibraryModel\MediaLibraryModelInterface;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\Traits\HasMediaInterface as HasMedia;
+use Spatie\MediaLibrary\Media;
 use Spatie\SuperSeeder\Parsers\YamlParser;
 use Spatie\SuperSeeder\SuperSeeder;
 
@@ -133,11 +133,11 @@ class DatabaseSeeder extends Seeder
     /**
      * Add images to the given model.
      *
-     * @param \Spatie\MediaLibrary\MediaLibraryModel\MediaLibraryModelInterface $model
-     * @param int                                                               $minAmount
-     * @param int                                                               $maxAmount
+     * @param \Spatie\MediaLibrary\MediaLibraryModel\HasMedia $model
+     * @param int                                              $minAmount
+     * @param int                                              $maxAmount
      */
-    protected function addImages(MediaLibraryModelInterface $model, $minAmount = 1, $maxAmount = 3)
+    protected function addImages(HasMedia $model, $minAmount = 1, $maxAmount = 3)
     {
         foreach (range(1, $this->faker->numberBetween($minAmount, $maxAmount)) as $index) {
             $model->addMedia($this->faker->image($this->tempImageDir, 640, 480), 'images', false, false);
