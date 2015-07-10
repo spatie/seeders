@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+## 1.2.2
+- Marked v2 of laravel-medialibrary as a valid dependency
+
 ## 1.2.0
 - Added: `DatabaseSeeder::addTranslations`
 - Added: `DatabaseSeeder::truncateAllTables` now has an exclusion filter
