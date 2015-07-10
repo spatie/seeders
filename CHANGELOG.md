@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+## 2.0.0
+- Updated for new Blender
+
 ## 1.2.2
 - Marked v2 of laravel-medialibrary as a valid dependency
 
