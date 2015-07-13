@@ -4,7 +4,7 @@ namespace Spatie\Seeders;
 
 use Spatie\SuperSeeder\Factory;
 
-class StringFactory extends Factory
+class FragmentFactory extends Factory
 {
     public function isModel($data)
     {
@@ -18,7 +18,7 @@ class StringFactory extends Factory
     {
         $model->name = implode('.', $carry);
         $model->contains_html = false;
-        $model->hide_string = false;
+        $model->hide_fragment = false;
         $model->draft = false;
     }
 
@@ -63,6 +63,6 @@ class StringFactory extends Factory
 
     protected function setHide($model, $value)
     {
-        $model->hide_string = $value;
+        $model->hide_fragment = $value;
     }
 }
