@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+# 2.2.0
+- Allow adding images to other collections
+
 ## 2.1.0
 - Strings are now fragments
 
