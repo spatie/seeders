@@ -138,17 +138,18 @@ class DatabaseSeeder extends Seeder
      * Add images to the given model.
      *
      * @param \Spatie\MediaLibrary\MediaLibraryModel\HasMedia $model
-     * @param int                                              $minAmount
-     * @param int                                              $maxAmount
+     * @param int                                             $minAmount
+     * @param int                                             $maxAmount
+     * @param string                                          $collectionName
      */
-    protected function addImages(HasMedia $model, $minAmount = 1, $maxAmount = 3)
+    protected function addImages(HasMedia $model, $minAmount = 1, $maxAmount = 3, $collectionName = 'images')
     {
         if (env('APP_ENV') === 'testing') {
             return;
         }
         
         foreach (range(1, $this->faker->numberBetween($minAmount, $maxAmount)) as $index) {
-            $model->addMedia($this->faker->image($this->tempImageDir, 640, 480), 'images', false, false);
+            $model->addMedia($this->faker->image($this->tempImageDir, 640, 480), $collectionName, false, false);
         }
     }
 
