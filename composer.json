@@ -23,7 +23,6 @@
     ],
     "require": {
         "php" : ">=5.5.0",
-        "spatie/laravel-superseeder": "*",
         "spatie/laravel-medialibrary": "^2.0",
         "illuminate/database": "4.0 - 5.1",
         "illuminate/support": "4.0 - 5.1",
