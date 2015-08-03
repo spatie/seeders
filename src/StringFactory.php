@@ -2,7 +2,7 @@
 
 namespace Spatie\Seeders;
 
-use Spatie\SuperSeeder\Factory;
+use Spatie\Seeders\SuperSeeder\Factory;
 
 class StringFactory extends Factory
 {

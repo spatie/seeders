@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+## 2.1.0
+- Added superseeder to this package
+
 ## 2.0.0
 - Updated for new Blender
 

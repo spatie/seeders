@@ -10,8 +10,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\Media;
-use Spatie\SuperSeeder\Parsers\YamlParser;
-use Spatie\SuperSeeder\SuperSeeder;
+use Spatie\Seeders\SuperSeeder\Parsers\YamlParser;
+use Spatie\Seeders\SuperSeeder\SuperSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -55,8 +55,8 @@ class DatabaseSeeder extends Seeder
     }
 
     /**
-     * @param \Spatie\SuperSeeder\Factory $factory
-     * @param string                      $filename
+     * @param \Spatie\Seeders\SuperSeeder\Factory $factory
+     * @param string                              $filename
      */
     protected function superSeeder($factory, $filename)
     {

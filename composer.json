@@ -27,11 +27,17 @@
         "spatie/laravel-medialibrary": "^2.0",
         "illuminate/database": "4.0 - 5.1",
         "illuminate/support": "4.0 - 5.1",
-        "fzaninotto/faker": "^1.5"
+        "fzaninotto/faker": "^1.5",
+        "phpunit/phpunit": "^4.7"
     },
     "autoload": {
         "psr-4": {
             "Spatie\\Seeders\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spatie\\Seeders\\Test\\": "tests"
         }
     }
 }
