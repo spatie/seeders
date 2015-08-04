@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+## 3.0.0
+- Added support for medialib v3. 
+
 ##2.4.1
 - Remove support for medialib v3.
 
