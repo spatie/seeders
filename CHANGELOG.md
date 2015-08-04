@@ -2,6 +2,12 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+##2.4.1
+- Remove support for medialib v3.
+
+## 2.4.0 (this version does not work)
+- Added support for medialib v3. 
+
 ## 2.3.0
 - Added superseeder to this package
 
