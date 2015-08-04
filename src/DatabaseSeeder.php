@@ -8,7 +8,7 @@ use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
-use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 use Spatie\MediaLibrary\Media;
 use Spatie\Seeders\SuperSeeder\Parsers\YamlParser;
 use Spatie\Seeders\SuperSeeder\SuperSeeder;
