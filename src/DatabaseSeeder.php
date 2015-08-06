@@ -8,6 +8,7 @@ use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
+use Schema;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\Media;
 use Spatie\Seeders\SuperSeeder\Parsers\YamlParser;
@@ -45,7 +46,7 @@ class DatabaseSeeder extends Seeder
 
         Model::unguard();
 
-        $this->truncate((new Media())->getTable());
+        $this->truncateMediaTable();
 
         $this->createTemporaryImageDirectory();
 
@@ -93,6 +94,18 @@ class DatabaseSeeder extends Seeder
     protected function truncateAllTables()
     {
         $this->truncate(...$this->getAllTableNames($this->excludeWhenTruncatingAll));
+    }
+
+    /**
+     * Truncate the media table.
+     */
+    protected function truncateMediaTable()
+    {
+        $mediaTable = (new Media())->getTable();
+
+        if (Schema::hasTable($mediaTable)) {
+            $this->truncate($mediaTable);
+        }
     }
 
     /**
