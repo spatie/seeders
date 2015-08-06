@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+## 3.0.2
+- Removed medialibrary dependency alltogether
+
 ## 3.0.1
 - Only truncate media table if it exists.
 

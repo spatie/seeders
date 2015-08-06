@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Schema;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
-use Spatie\MediaLibrary\Media;
 use Spatie\Seeders\SuperSeeder\Parsers\YamlParser;
 use Spatie\Seeders\SuperSeeder\SuperSeeder;
 
@@ -101,10 +99,8 @@ class DatabaseSeeder extends Seeder
      */
     protected function truncateMediaTable()
     {
-        $mediaTable = (new Media())->getTable();
-
-        if (Schema::hasTable($mediaTable)) {
-            $this->truncate($mediaTable);
+        if (Schema::hasTable('media')) {
+            $this->truncate('media');
         }
     }
 
@@ -150,12 +146,12 @@ class DatabaseSeeder extends Seeder
     /**
      * Add images to the given model.
      *
-     * @param \Spatie\MediaLibrary\MediaLibraryModel\HasMedia $model
-     * @param int                                             $minAmount
-     * @param int                                             $maxAmount
-     * @param string                                          $collectionName
+     * @param \Illuminate\Database\Eloquent $model
+     * @param int                           $minAmount
+     * @param int                           $maxAmount
+     * @param string                        $collectionName
      */
-    protected function addImages(HasMedia $model, $minAmount = 1, $maxAmount = 3, $collectionName = 'images')
+    protected function addImages($model, $minAmount = 1, $maxAmount = 3, $collectionName = 'images')
     {
         if (env('APP_ENV') === 'testing') {
             return;
