@@ -159,6 +159,10 @@ class DatabaseSeeder extends Seeder
         
         foreach (range(1, $this->faker->numberBetween($minAmount, $maxAmount)) as $index) {
             $model->addMedia($this->faker->image($this->tempImageDir, 640, 480), $collectionName, false, false);
+
+            $image = $this->faker->image($this->tempImageDir, 640, 480);
+
+            $model->addMedia($image)->toCollection($collectionName);
         }
     }
 
