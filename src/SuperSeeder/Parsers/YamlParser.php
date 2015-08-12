@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Seeders\Superseeder\Parsers;
+namespace Spatie\Seeders\SuperSeeder\Parsers;
 
 use Symfony\Component\Yaml\Yaml;
 

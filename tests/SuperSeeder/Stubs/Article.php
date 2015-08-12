@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Seeders\Test\Superseeder\Stubs;
+namespace Spatie\Seeders\Test\SuperSeeder\Stubs;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Spatie\Seeders\Superseeder\Parsers\YamlParser;
+use Spatie\Seeders\SuperSeeder\Parsers\YamlParser;
 
 class YamlParserTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Seeders\Test\Superseeder;
+namespace Spatie\Seeders\Test\SuperSeeder;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Spatie\Seeders\Superseeder\Factory;
-use Spatie\Seeders\Test\Superseeder\Stubs\Person;
-use Spatie\Seeders\Test\Superseeder\Stubs\PersonFactory;
+use Spatie\Seeders\SuperSeeder\Factory;
+use Spatie\Seeders\Test\SuperSeeder\Stubs\Person;
+use Spatie\Seeders\Test\SuperSeeder\Stubs\PersonFactory;
 
 class FactoryTest extends TestCase
 {

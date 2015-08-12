@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\Seeders\Superseeder;
+namespace Spatie\Seeders\SuperSeeder;
 
-use Spatie\Seeders\Superseeder\Parsers\Parser;
+use Spatie\Seeders\SuperSeeder\Parsers\Parser;
 
 class SuperSeeder
 {

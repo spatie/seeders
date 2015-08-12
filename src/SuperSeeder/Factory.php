@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Seeders\Superseeder;
+namespace Spatie\Seeders\SuperSeeder;
 
 class Factory
 {
