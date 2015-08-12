@@ -1,12 +1,15 @@
 # Changelog
 
-All Notable changes to `seeders` will be documented in this file
+All Notable changes to `seeders` will be documented in this file.
+
+## 3.0.4
+- SuperSeeder namespace case fix.
 
 ## 3.0.3
-- Fixed addImages for medialibrary v3
+- Fixed addImages for medialibrary v3.
 
 ## 3.0.2
-- Removed medialibrary dependency alltogether
+- Removed medialibrary dependency alltogether.
 
 ## 3.0.1
 - Only truncate media table if it exists.
