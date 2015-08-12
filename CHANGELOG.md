@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file
 
+## 3.0.3
+- Fixed addImages for medialibrary v3
+
 ## 3.0.2
 - Removed medialibrary dependency alltogether
 
