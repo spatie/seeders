@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 3.0.5
+- SuperSeeder namespace case fix.
+
 ## 3.0.4
 - SuperSeeder namespace case fix.
 
