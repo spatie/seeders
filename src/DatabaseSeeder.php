@@ -8,9 +8,12 @@ use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
 use Schema;
 use Spatie\Seeders\SuperSeeder\Parsers\YamlParser;
 use Spatie\Seeders\SuperSeeder\SuperSeeder;
+use function Spatie\array_rand_value;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
     public function __construct()
     {
-        $this->tempImageDir = storage_path().'/tempSeeder';
+        $this->tempImageDir = storage_path('temp/seeder');
         $this->faker = Factory::create();
     }
 
@@ -120,8 +123,8 @@ class DatabaseSeeder extends Seeder
             ->map(function(\stdClass $rawResult) {
                 return $rawResult->name;
             })
-            ->filter(function ($tableName) {
-                return !in_array($tableName, $this->excludeWhenTruncatingAll);
+            ->filter(function ($tableName) use ($exclude) {
+                return !in_array($tableName, $exclude);
             })
             ->toArray()
         ;
@@ -156,13 +159,17 @@ class DatabaseSeeder extends Seeder
         if (env('APP_ENV') === 'testing') {
             return;
         }
+
+        $imagePath = __DIR__.'/../images';
+
+        $images = (new Filesystem(new Local($imagePath)))->listContents();
         
         foreach (range(1, $this->faker->numberBetween($minAmount, $maxAmount)) as $index) {
-            $model->addMedia($this->faker->image($this->tempImageDir, 640, 480), $collectionName, false, false);
+            $image = array_rand_value($images)['path'];
 
-            $image = $this->faker->image($this->tempImageDir, 640, 480);
-
-            $model->addMedia($image)->toCollection($collectionName);
+            $model
+                ->addMedia("{$imagePath}/{$image}")
+                ->toCollection($collectionName);
         }
     }
 

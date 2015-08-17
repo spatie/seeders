@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 3.1.0
+- Images now seed from a local directory
+
 ## 3.0.5
 - SuperSeeder namespace case fix.
 
