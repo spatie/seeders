@@ -169,6 +169,7 @@ class DatabaseSeeder extends Seeder
 
             $model
                 ->addMedia("{$imagePath}/{$image}")
+                ->preservingOriginal()
                 ->toCollection($collectionName);
         }
     }

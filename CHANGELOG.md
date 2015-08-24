@@ -2,8 +2,11 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 3.1.1
+- Fixed a bug where the seed images would be moved instead of copied.
+ 
 ## 3.1.0
-- Images now seed from a local directory
+- Images now seed from a local directory.
 
 ## 3.0.5
 - SuperSeeder namespace case fix.
