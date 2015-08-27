@@ -48,6 +48,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->truncateMediaTable();
+        $this->truncateActivityTable();
 
         $this->createTemporaryImageDirectory();
 
@@ -104,6 +105,16 @@ class DatabaseSeeder extends Seeder
     {
         if (Schema::hasTable('media')) {
             $this->truncate('media');
+        }
+    }
+
+    /**
+     * Truncate the activity log table.
+     */
+    protected function truncateActivityTable()
+    {
+        if (Schema::hasTable('activity_log')) {
+            $this->truncate('activity_log');
         }
     }
 

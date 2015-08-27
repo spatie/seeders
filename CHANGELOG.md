@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 3.2.0
+- Added `truncateActivityTable`.
+
 ## 3.1.1
 - Fixed a bug where the seed images would be moved instead of copied.
  
