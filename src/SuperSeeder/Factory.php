@@ -30,9 +30,11 @@ class Factory
 
         $this->initialize($model, $data, $carry);
 
-        foreach ($data as $subject => $value) {
-            $setter = 'set' . ucfirst($subject);
-            $this->$setter($model, $value, $data, $carry);
+        if (is_array($data)) {
+            foreach ($data as $subject => $value) {
+                $setter = 'set' . ucfirst($subject);
+                $this->$setter($model, $value, $data, $carry);
+            }
         }
 
         $this->finalize($model, $data, $carry);

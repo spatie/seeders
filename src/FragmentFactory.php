@@ -8,10 +8,12 @@ class FragmentFactory extends Factory
 {
     public function isModel($data)
     {
-        $hasDescription = isset($data['desc']);
-        $hasContents = isset($data['text']) || isset($data['html']) || isset($data['name']);
-
-        return $hasDescription && $hasContents;
+        return (
+            is_string($data) ||
+            isset($data['text']) ||
+            isset($data['html']) ||
+            isset($data['name'])
+        );
     }
 
     protected function initialize($model, $data, $carry)
@@ -20,6 +22,16 @@ class FragmentFactory extends Factory
         $model->contains_html = false;
         $model->hide_fragment = false;
         $model->draft = false;
+
+        if (is_string($data)) {
+            $this->setText($model, $data);
+        }
+    }
+
+    protected function finalize($model, $data, $carry) {
+        if (! $model->description) {
+            $model->description = $model->text;
+        }
     }
 
     protected function setDesc($model, $value)
