@@ -2,6 +2,7 @@
 
 namespace Spatie\Seeders;
 
+use ErrorException;
 use Spatie\Seeders\SuperSeeder\Factory;
 
 class FragmentFactory extends Factory
@@ -76,5 +77,24 @@ class FragmentFactory extends Factory
     protected function setHide($model, $value)
     {
         $model->hide_fragment = $value;
+    }
+
+    /**
+     * Save a model. You can overwrite this method if you don't want your models to be immediately
+     * saved to the database.
+     * @param $model
+     * @return void
+     */
+    protected function save($model)
+    {
+        try {
+            $model->save();
+        } catch (ErrorException $e) {
+            if (str_contains($e->getMessage(), 'preg_replace')) {
+                throw new ErrorException(
+                    $e->getMessage().'. Note that `name`, `text` and `html` are reserved keys when seeding fragments.'
+                );
+            }
+        }
     }
 }
