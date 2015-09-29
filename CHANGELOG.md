@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 3.4.0
+- Added `addDownloads`-method
+
 ## 3.3.1
 - Added reserved keyword exception message to FragmentFactory.
 

@@ -20,6 +20,7 @@ class SuperSeeder
      *
      * @param $data
      * @param Parser|null $parser
+     *
      * @return array
      */
     public function seed($data, Parser $parser = null)
@@ -37,6 +38,7 @@ class SuperSeeder
      *
      * @param $filename
      * @param Parser|null $parser
+     *
      * @return array
      */
     public function seedFromFile($filename, Parser $parser = null)
@@ -50,19 +52,20 @@ class SuperSeeder
      * Recursively traverse a set of data and make a model of it if it contains the correct data for a valid model.
      *
      * @param $data
-     * @param array $carry  Used to carry data around recursive calls of the function
+     * @param array $carry Used to carry data around recursive calls of the function
+     *
      * @return array
      */
     protected function makeModels($data, $carry = [])
     {
         $models = [];
 
-        if (! is_array($data)) {
+        if (!is_array($data)) {
             return $models;
         }
 
         foreach ($data as $key => $node) {
-            $_carry = $carry; 
+            $_carry = $carry;
 
             $_carry[] = $key;
 

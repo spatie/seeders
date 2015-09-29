@@ -131,7 +131,7 @@ class DatabaseSeeder extends Seeder
             DB::connection()->getDatabaseName());
 
         $tableNames = Collection::make(DB::select($query))
-            ->map(function(\stdClass $rawResult) {
+            ->map(function (\stdClass $rawResult) {
                 return $rawResult->name;
             })
             ->filter(function ($tableName) use ($exclude) {
@@ -167,19 +167,44 @@ class DatabaseSeeder extends Seeder
      */
     protected function addImages($model, $minAmount = 1, $maxAmount = 3, $collectionName = 'images')
     {
+        $this->addFiles(__DIR__.'/../images', $model, $minAmount, $maxAmount, $collectionName);
+    }
+
+    /**
+     * Add downloads to the given model.
+     *
+     * @param \Illuminate\Database\Eloquent $model
+     * @param int                           $minAmount
+     * @param int                           $maxAmount
+     * @param string                        $collectionName
+     */
+    protected function addDownloads($model, $minAmount = 1, $maxAmount = 1, $collectionName = 'downloads')
+    {
+        $this->addFiles(__DIR__.'/../downloads', $model, $minAmount, $maxAmount, $collectionName);
+    }
+
+    /**
+     * Add files to the given model.
+     *
+     * @param $sourceDirectory
+     * @param \Illuminate\Database\Eloquent $model
+     * @param int                           $minAmount
+     * @param int                           $maxAmount
+     * @param string                        $collectionName
+     */
+    protected function addFiles($sourceDirectory, $model, $minAmount = 1, $maxAmount = 3, $collectionName)
+    {
         if (env('APP_ENV') === 'testing') {
             return;
         }
 
-        $imagePath = __DIR__.'/../images';
+        $files = (new Filesystem(new Local($sourceDirectory)))->listContents();
 
-        $images = (new Filesystem(new Local($imagePath)))->listContents();
-        
         foreach (range(1, $this->faker->numberBetween($minAmount, $maxAmount)) as $index) {
-            $image = array_rand_value($images)['path'];
+            $file = array_rand_value($files)['path'];
 
             $model
-                ->addMedia("{$imagePath}/{$image}")
+                ->addMedia("{$sourceDirectory}/{$file}")
                 ->preservingOriginal()
                 ->toCollection($collectionName);
         }

@@ -29,8 +29,9 @@ class FragmentFactory extends Factory
         }
     }
 
-    protected function finalize($model, $data, $carry) {
-        if (! $model->description) {
+    protected function finalize($model, $data, $carry)
+    {
+        if (!$model->description) {
             $model->description = $model->text;
         }
     }
@@ -82,8 +83,8 @@ class FragmentFactory extends Factory
     /**
      * Save a model. You can overwrite this method if you don't want your models to be immediately
      * saved to the database.
+     *
      * @param $model
-     * @return void
      */
     protected function save($model)
     {

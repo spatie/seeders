@@ -10,7 +10,7 @@ class Factory
     protected $model;
 
     /**
-     * @param string $model  The model's classname
+     * @param string $model The model's classname
      */
     public function __construct($model)
     {
@@ -18,21 +18,20 @@ class Factory
     }
 
     /**
-     * Make a model from data raw data
+     * Make a model from data raw data.
      *
      * @param $data
      * @param array $carry
-     * @return void
      */
     public function make($data, $carry = [])
     {
-        $model = new $this->model;
+        $model = new $this->model();
 
         $this->initialize($model, $data, $carry);
 
         if (is_array($data)) {
             foreach ($data as $subject => $value) {
-                $setter = 'set' . ucfirst($subject);
+                $setter = 'set'.ucfirst($subject);
                 $this->$setter($model, $value, $data, $carry);
             }
         }
@@ -48,6 +47,7 @@ class Factory
      * Determine if a set of data can be transformed into a model.
      *
      * @param array $data
+     *
      * @return bool
      */
     public function isModel($data)
@@ -61,7 +61,6 @@ class Factory
      * @param $model
      * @param $data
      * @param $carry
-     * @return void
      */
     protected function initialize($model, $data, $carry)
     {
@@ -74,7 +73,6 @@ class Factory
      * @param $model
      * @param $data
      * @param $carry
-     * @return void
      */
     protected function finalize($model, $data, $carry)
     {
@@ -84,8 +82,8 @@ class Factory
     /**
      * Save a model. You can overwrite this method if you don't want your models to be immediately
      * saved to the database.
+     *
      * @param $model
-     * @return void
      */
     protected function save($model)
     {
@@ -97,7 +95,6 @@ class Factory
      *
      * @param $method
      * @param $parameters
-     * @return void
      */
     public function __call($method, $parameters)
     {

@@ -36,7 +36,7 @@ class FactoryTest extends TestCase
     /** @test */
     public function it_sets_attributes_without_custom_setters()
     {
-        $factory = new PersonFactory;
+        $factory = new PersonFactory();
         $person = $factory->make($this->data[0]);
 
         $this->assertEquals('Sebastian', $person->firstname);
@@ -46,7 +46,7 @@ class FactoryTest extends TestCase
     /** @test */
     public function it_sets_attributes_with_custom_setters()
     {
-        $factory = new PersonFactory;
+        $factory = new PersonFactory();
         $person = $factory->make($this->data[1]);
 
         $this->assertEquals('admin', $person->role);
@@ -55,7 +55,7 @@ class FactoryTest extends TestCase
     /** @test */
     public function it_sets_attributes_in_finalize()
     {
-        $factory = new PersonFactory;
+        $factory = new PersonFactory();
         $person = $factory->make($this->data[0]);
 
         $this->assertEquals('sebastian@spatie.be', $person->email);

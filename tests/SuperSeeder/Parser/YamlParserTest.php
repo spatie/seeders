@@ -9,7 +9,7 @@ class YamlParserTest extends TestCase
     public function it_parses_yaml()
     {
         $yaml = '{ foo: bar, baz: qux }';
-        $parser = new YamlParser;
+        $parser = new YamlParser();
 
         $data = $parser->parse($yaml);
         $this->assertEquals(['foo' => 'bar', 'baz' => 'qux'], $data);

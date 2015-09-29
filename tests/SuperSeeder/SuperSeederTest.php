@@ -3,7 +3,6 @@
 namespace Spatie\Seeders\Test\SuperSeeder;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Spatie\Seeders\SuperSeeder\Factory;
 use Spatie\Seeders\SuperSeeder\Parsers\YamlParser;
 use Spatie\Seeders\SuperSeeder\SuperSeeder;
 use Spatie\Seeders\Test\SuperSeeder\Stubs\ArticleFactory;
@@ -15,7 +14,7 @@ class SuperSeederTest extends TestCase
     /** @test */
     public function it_is_initializable()
     {
-        $superSeeder = new SuperSeeder(new PersonFactory, new YamlParser);
+        $superSeeder = new SuperSeeder(new PersonFactory(), new YamlParser());
 
         $this->assertInstanceOf(SuperSeeder::class, $superSeeder);
     }
@@ -23,7 +22,7 @@ class SuperSeederTest extends TestCase
     /** @test */
     public function it_seeds_from_raw_data()
     {
-        $superSeeder = new SuperSeeder(new PersonFactory);
+        $superSeeder = new SuperSeeder(new PersonFactory());
 
         $data = [
             ['firstname' => 'Sebastian', 'lastname' => 'De Deyne'],
@@ -40,8 +39,8 @@ class SuperSeederTest extends TestCase
     /** @test */
     public function it_seeds_from_a_file()
     {
-        $superSeeder = new SuperSeeder(new PersonFactory);
-        $seeded = $superSeeder->seedFromFile(__DIR__.'/fixtures/people.yaml', new YamlParser);
+        $superSeeder = new SuperSeeder(new PersonFactory());
+        $seeded = $superSeeder->seedFromFile(__DIR__.'/fixtures/people.yaml', new YamlParser());
 
         $this->assertInstanceOf(Person::class, $seeded[0]);
         $this->assertInstanceOf(Person::class, $seeded[1]);
@@ -50,14 +49,13 @@ class SuperSeederTest extends TestCase
 
     public function it_seeds_from_a_directory()
     {
-        
     }
 
     /** @test */
     public function it_seeds_recursively_and_carries_values_throughout()
     {
-        $superSeeder = new SuperSeeder(new ArticleFactory);
-        $seeded = $superSeeder->seedFromFile(__DIR__.'/fixtures/articles.yaml', new YamlParser);
+        $superSeeder = new SuperSeeder(new ArticleFactory());
+        $seeded = $superSeeder->seedFromFile(__DIR__.'/fixtures/articles.yaml', new YamlParser());
 
         $this->assertCount(4, $seeded);
         $this->assertEquals('tech', $seeded[0]->category);

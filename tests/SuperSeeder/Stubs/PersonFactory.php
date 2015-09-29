@@ -13,7 +13,7 @@ class PersonFactory extends Factory
 
     protected function finalize($model, $data, $carry)
     {
-        $model->email = strtolower($model->firstname) . '@spatie.be';
+        $model->email = strtolower($model->firstname).'@spatie.be';
 
         if (!isset($model->role)) {
             $model->role = 'user';
