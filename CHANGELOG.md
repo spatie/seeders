@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 3.5.0
+- Add support for L5.2
+
 ## 3.4.0
 - Added `addDownloads`-method
 
