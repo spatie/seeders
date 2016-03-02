@@ -2,6 +2,10 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 3.5.1
+- Improved PHP & Laravel version requirements
+- Moved phpunit/phpunit to requrie-dev
+
 ## 3.5.0
 - Add support for L5.2
 
