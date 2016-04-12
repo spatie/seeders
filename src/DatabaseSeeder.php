@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        if (app()->environment('local')) {
+        if (!app()->environment('local', 'testing')) {
             throw new \Exception('Sorry, no full seeds on production!');
         }
 
