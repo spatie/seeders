@@ -34,11 +34,9 @@
     "autoload": {
         "psr-4": {
             "Spatie\\Seeders\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Spatie\\Seeders\\Test\\": "tests"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     }
 }
