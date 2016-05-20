@@ -32,13 +32,15 @@ class DatabaseSeeder extends Seeder
 
     protected function truncate(string ...$tables)
     {
-        $this->disableForeignKeyChecks();
+        collect($tables)->each(function (string $table) {
+            if (str_contains($table, 'App\Models')) {
+                $table = (new $table)->getTable();
+            }
 
-        foreach ($tables as $table) {
+            $this->disableForeignKeyChecks();
             DB::table($table)->truncate();
-        }
-
-        $this->enableForeignKeyChecks();
+            $this->enableForeignKeyChecks();
+        });
     }
 
     protected function disableForeignKeyChecks()
