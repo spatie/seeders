@@ -2,6 +2,14 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 4.1.0
+- Fixed composer deps
+- Truncate table now accepts ::class strings for models
+
+## 4.0.0
+- Big cleanup
+- Added custom Faker
+
 ## 3.5.1
 - Improved PHP & Laravel version requirements
 - Moved phpunit/phpunit to requrie-dev
