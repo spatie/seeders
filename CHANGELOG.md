@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 4.2.0
+- Added `latitude` and `longitude` to Faker
+
 ## 4.1.0
 - Fixed composer deps
 - Truncate table now accepts ::class strings for models
