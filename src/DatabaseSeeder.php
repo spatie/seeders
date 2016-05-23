@@ -10,7 +10,6 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Schema;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
-use function Spatie\array_rand_value;
 
 class DatabaseSeeder extends Seeder
 {
@@ -101,15 +100,19 @@ class DatabaseSeeder extends Seeder
         int $max = 3,
         string $collectionName
     ) {
-        $files = (new Filesystem(new Local($sourceDirectory)))->listContents();
+        $files = collect(
+            (new Filesystem(new Local($sourceDirectory)))->listContents()
+        );
 
-        foreach (range($min, mt_rand($min, $max)) as $index) {
-            $file = array_rand_value($files)['path'];
+        collect(range($min, mt_rand($min, $max)))
+            ->each(function () use ($files, $model, $sourceDirectory, $collectionName) {
 
-            $model
-                ->addMedia("{$sourceDirectory}/{$file}")
-                ->preservingOriginal()
-                ->toCollection($collectionName);
-        }
+                $file = $files->random()['path'];
+
+                $model
+                    ->addMedia("{$sourceDirectory}/{$file}")
+                    ->preservingOriginal()
+                    ->toCollection($collectionName);
+            });
     }
 }
