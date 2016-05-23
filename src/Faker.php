@@ -94,6 +94,16 @@ class Faker
         return array_fill_keys(config('app.locales'), $text);
     }
 
+    public function latitude() : float
+    {
+        return mt_rand(5035000000, 5147000000) / (10 ** 8);
+    }
+
+    public function longitude() : float
+    {
+        return mt_rand(266000000, 571000000) / (10 ** 8);
+    }
+
     public function __get(string $name)
     {
         return $this->faker->$name;
