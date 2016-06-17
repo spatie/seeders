@@ -103,6 +103,21 @@ class Faker
     {
         return mt_rand(266000000, 571000000) / (10 ** 8);
     }
+    
+    public function youTubeIds(int $amount): array
+    {
+        return collect([
+            'iz7wtTO7roQ',
+            'PTvBpF-bWZI',
+            '6v2L2UGZJAM',
+            'OnoNITE-CLc',
+            'Xq_a8f24UJI',
+            'k-QmqlY6Mnw',
+        ])
+            ->shuffle()
+            ->take($amount)
+            ->toArray();
+    }
 
     public function __get(string $name)
     {
