@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 4.3.0 - 2016-06-17
+- Added `youTubeIds`
+
 ## 4.2.0
 - Added `latitude` and `longitude` to Faker
 
