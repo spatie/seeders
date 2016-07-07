@@ -2,7 +2,10 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
-## 4.3.0 - 2016-06-17
+## 4.3.1
+- Allow custom amounts in sentences and paragraphs
+
+## 4.3.0
 - Added `youTubeIds`
 
 ## 4.2.0
