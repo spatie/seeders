@@ -30,9 +30,9 @@ class Faker
         return $this->faker->boolean(80);
     }
 
-    public function sentence(): string
+    public function sentence(int $words = 0): string
     {
-        return $this->faker->sentence(mt_rand(4, 8));
+        return $this->faker->sentence($words ?: mt_rand(4, 8));
     }
 
     public function sentences(int $min, int $max = 0): string
@@ -47,9 +47,9 @@ class Faker
         return rtrim($this->faker->sentence(mt_rand(2, 5)), '.');
     }
 
-    public function paragraph(): string
+    public function paragraph(int $sentences = 0): string
     {
-        return $this->faker->paragraph(mt_rand(6, 10));
+        return $this->faker->paragraph($sentences ?: mt_rand(6, 10));
     }
 
     public function paragraphs(int $min, int $max = 0): string
