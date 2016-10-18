@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 4.3.2
+- Added withMedia flag
+
 ## 4.3.1
 - Allow custom amounts in sentences and paragraphs
 

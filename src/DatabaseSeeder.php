@@ -13,6 +13,8 @@ use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 class DatabaseSeeder extends Seeder
 {
+    public static $withMedia = true;
+
     public function run()
     {
         if (!app()->environment('local', 'testing')) {
