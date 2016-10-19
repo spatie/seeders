@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 4.3.3
+- Add fake docblock to help with IDE method completion
+
 ## 4.3.2
 - Added withMedia flag
 
