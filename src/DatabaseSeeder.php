@@ -38,24 +38,10 @@ class DatabaseSeeder extends Seeder
                 $table = (new $table)->getTable();
             }
 
-            $this->disableForeignKeyChecks();
+            Schema::disableForeignKeyConstraints();
             DB::table($table)->truncate();
-            $this->enableForeignKeyChecks();
+            Schema::enableForeignKeyConstraints();
         });
-    }
-
-    protected function disableForeignKeyChecks()
-    {
-        if (config('database.default') === 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        }
-    }
-
-    protected function enableForeignKeyChecks()
-    {
-        if (config('database.default') === 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1');
-        }
     }
 
     protected function truncateMediaTable()
