@@ -2,14 +2,14 @@
 
 namespace Spatie\Seeders;
 
-use App\Models\ContentBlock;
 use DB;
 use File;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Seeder;
-use League\Flysystem\Adapter\Local;
-use League\Flysystem\Filesystem;
 use Schema;
+use App\Models\ContentBlock;
+use Illuminate\Database\Seeder;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Adapter\Local;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 class DatabaseSeeder extends Seeder
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
 
     protected function clearMediaDirectory()
     {
-        File::cleanDirectory(public_path() . '/media');
+        File::cleanDirectory(public_path().'/media');
     }
 
     protected function addImages(
@@ -89,8 +89,8 @@ class DatabaseSeeder extends Seeder
     protected function addFiles(
         string $sourceDirectory,
         HasMedia $model,
-        int $min = 1,
-        int $max = 3,
+        int $min,
+        int $max,
         string $collectionName
     ) {
         $files = collect(
@@ -99,7 +99,6 @@ class DatabaseSeeder extends Seeder
 
         collect(range($min, mt_rand($min, $max)))
             ->each(function () use ($files, $model, $sourceDirectory, $collectionName) {
-
                 $file = $files->random()['path'];
 
                 $model
@@ -126,7 +125,7 @@ class DatabaseSeeder extends Seeder
                 'online' => true,
             ]);
 
-            $this->addImages($contentBlock, 1,1, 'image');
+            $this->addImages($contentBlock, 1, 1, 'image');
             $contentBlock->collection_name = 'default';
             $contentBlock->subject()->associate($model);
             $contentBlock->save();

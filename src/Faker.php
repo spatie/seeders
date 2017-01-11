@@ -56,17 +56,17 @@ class Faker
     {
         $amount = $max ? mt_rand($min, $max) : $min;
 
-        return '<p>' . implode('</p><p>', $this->faker->paragraphs($amount)) . '</p>';
+        return '<p>'.implode('</p><p>', $this->faker->paragraphs($amount)).'</p>';
     }
 
     public function text(): string
     {
-        return el('p.intro', $this->paragraph()) .
-            el('h3', $this->sentence()) .
-            el('p', $this->paragraph()) .
-            el('blockquote', $this->paragraph()) .
-            el('h3', $this->sentence()) .
-            el('p', $this->paragraph()) .
+        return el('p.intro', $this->paragraph()).
+            el('h3', $this->sentence()).
+            el('p', $this->paragraph()).
+            el('blockquote', $this->paragraph()).
+            el('h3', $this->sentence()).
+            el('p', $this->paragraph()).
             el('p', $this->paragraph());
     }
 
@@ -74,7 +74,7 @@ class Faker
     {
         $firstName = $firstName ?: $this->faker->firstName;
         $lastName = $lastName ?: $this->faker->lastName;
-        $email = strtolower($firstName) . '.' . strtolower($lastName) . '@spatie.be';
+        $email = strtolower($firstName).'.'.strtolower($lastName).'@spatie.be';
 
         return compact('firstName', 'lastName', 'email');
     }
@@ -103,7 +103,7 @@ class Faker
     {
         return mt_rand(266000000, 571000000) / (10 ** 8);
     }
-    
+
     public function youTubeIds(int $amount): array
     {
         return collect([
