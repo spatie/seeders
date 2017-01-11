@@ -2,6 +2,7 @@
 
 namespace Spatie\Seeders;
 
+use App\Models\ContentBlock;
 use DB;
 use File;
 use Illuminate\Database\Eloquent\Model;
@@ -17,15 +18,12 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-        if (!app()->environment('local', 'testing')) {
-            throw new \Exception('Sorry, no full seeds on production!');
-        }
-
         DB::connection()->disableQueryLog();
 
         Model::unguard();
 
         $this->truncateMediaTable();
+        $this->truncateContentBlocksTable();
         $this->truncateActivityTable();
 
         $this->clearMediaDirectory();
@@ -51,6 +49,13 @@ class DatabaseSeeder extends Seeder
         }
     }
 
+    protected function truncateContentBlocksTable()
+    {
+        if (Schema::hasTable('content_blocks')) {
+            $this->truncate('content_blocks');
+        }
+    }
+
     protected function truncateActivityTable()
     {
         if (Schema::hasTable('activity_log')) {
@@ -60,7 +65,7 @@ class DatabaseSeeder extends Seeder
 
     protected function clearMediaDirectory()
     {
-        File::cleanDirectory(public_path().'/media');
+        File::cleanDirectory(public_path() . '/media');
     }
 
     protected function addImages(
@@ -102,5 +107,31 @@ class DatabaseSeeder extends Seeder
                     ->preservingOriginal()
                     ->toCollection($collectionName);
             });
+    }
+
+    public function addContentBlocks(Model $model, $minimum = 1, $maximum = 3): Model
+    {
+        $maximum = faker()->numberBetween($minimum, $maximum);
+
+        if ($maximum === 0) {
+            return $model;
+        }
+
+        foreach (range($minimum, $maximum) as $i) {
+            $contentBlock = ContentBlock::create([
+                'type' => faker()->randomElement(['imageLeft', 'imageRight']),
+                'name' => faker()->translate(faker()->sentence()),
+                'text' => faker()->translate(faker()->paragraph()),
+                'draft' => false,
+                'online' => true,
+            ]);
+
+            $this->addImages($contentBlock, 1,1, 'image');
+            $contentBlock->collection_name = 'default';
+            $contentBlock->subject()->associate($model);
+            $contentBlock->save();
+        }
+
+        return $model;
     }
 }
