@@ -1,6 +1,6 @@
 # Changelog
 
-All Notable changes to `seeders` will be documented in this file.
+All notable changes to `seeders` will be documented in this file.
 
 ## 4.4.1 - 2017-02-03
 - Make compatible with `spatie/laravel-medialibrary` v5
