@@ -104,7 +104,7 @@ class DatabaseSeeder extends Seeder
                 $model
                     ->addMedia("{$sourceDirectory}/{$file}")
                     ->preservingOriginal()
-                    ->toCollection($collectionName);
+                    ->toMediaLibrary($collectionName);
             });
     }
 

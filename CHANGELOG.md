@@ -2,6 +2,9 @@
 
 All Notable changes to `seeders` will be documented in this file.
 
+## 4.4.1 - 2017-02-03
+- Make compatible with `spatie/laravel-medialibrary` v5
+
 ## 4.4.0
 - Add content block seeder
 
