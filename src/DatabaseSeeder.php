@@ -16,6 +16,13 @@ class DatabaseSeeder extends Seeder
 {
     public static $withMedia = true;
 
+    const IMAGESET_BUILDINGS = 'buildings';
+    const IMAGESET_PEOPLE = 'people';
+    const IMAGESET_LANDSCAPES = 'landscapes';
+    const IMAGESET_FOOD = 'food';
+    const IMAGESET_CITYSCAPES = 'cityscapes';
+    const IMAGESET_LOGOS = 'logos';
+
     public function run()
     {
         DB::connection()->disableQueryLog();
@@ -72,9 +79,11 @@ class DatabaseSeeder extends Seeder
         HasMedia $model,
         $min = 1,
         $max = 3,
-        $collectionName = 'images'
+        $collectionName = 'images',
+        $setName = 'buildings'
     ) {
-        $this->addFiles(__DIR__.'/../images', $model, $min, $max, $collectionName);
+        $sourceDirectory = __DIR__.'/../images/'.$setName;
+        $this->addFiles($sourceDirectory, $model, $min, $max, $collectionName);
     }
 
     protected function addDownloads(

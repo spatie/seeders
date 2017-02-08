@@ -2,6 +2,9 @@
 
 All notable changes to `seeders` will be documented in this file.
 
+## 4.4.2 - 2017-02-08
+- Added differently themed image sets
+
 ## 4.4.1 - 2017-02-03
 - Make compatible with `spatie/laravel-medialibrary` v5
 
