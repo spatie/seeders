@@ -2,7 +2,7 @@
 
 All notable changes to `seeders` will be documented in this file.
 
-## 4.4.2 - 2017-02-08
+## 4.5.0 - 2017-02-08
 - Added differently themed image sets
 
 ## 4.4.1 - 2017-02-03
