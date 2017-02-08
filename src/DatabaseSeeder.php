@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
         $collectionName = 'images',
         $setName = 'buildings'
     ) {
-        $sourceDirectory = __DIR__ . '/../images/'.$setName;
+        $sourceDirectory = __DIR__.'/../images/'.$setName;
         $this->addFiles($sourceDirectory, $model, $min, $max, $collectionName);
     }
 
