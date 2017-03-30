@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
     /**
      * @param string[] ...$tables
      *
-     * @deprecated Deprecated since
+     * @deprecated
      */
     protected function truncate(string ...$tables)
     {
