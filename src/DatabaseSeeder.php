@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach (range($minimum, $maximum) as $i) {
-            $contentBlock = ContentBlock::create([
+            $contentBlock = new ContentBlock([
                 'type' => faker()->randomElement(['imageLeft', 'imageRight']),
                 'name' => faker()->translate(faker()->sentence()),
                 'text' => faker()->translate(faker()->paragraph()),
@@ -134,10 +134,11 @@ class DatabaseSeeder extends Seeder
                 'online' => true,
             ]);
 
-            $this->addImages($contentBlock, 1, 1, 'image');
             $contentBlock->collection_name = 'default';
             $contentBlock->subject()->associate($model);
             $contentBlock->save();
+
+            $this->addImages($contentBlock, 1, 1, 'image');
         }
 
         return $model;
