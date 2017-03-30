@@ -5,8 +5,6 @@ All notable changes to `seeders` will be documented in this file.
 ## 4.6.0 - 2017-03-30
 - Truncate all tables (except migrations) before seeding
 - Deprecated `truncate()` method
-
-## 4.5.1 - 2017-03-28
 - Fixed contentBlocks seeder
 
 ## 4.5.0 - 2017-02-08
