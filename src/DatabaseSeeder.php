@@ -29,13 +29,34 @@ class DatabaseSeeder extends Seeder
 
         Model::unguard();
 
-        $this->truncateMediaTable();
-        $this->truncateContentBlocksTable();
-        $this->truncateActivityTable();
+        $this->truncateAll();
 
         $this->clearMediaDirectory();
     }
 
+    protected function truncateAll()
+    {
+        Schema::disableForeignKeyConstraints();
+
+        collect(DB::select("SHOW FULL TABLES WHERE Table_Type = 'BASE TABLE'"))
+            ->map(function ($tableProperties) {
+                return get_object_vars($tableProperties)[key($tableProperties)];
+            })
+            ->reject(function (string $tableName) {
+                return $tableName === 'migrations';
+            })
+            ->each(function (string $tableName) {
+                DB::table($tableName)->truncate();
+            });
+
+        Schema::enableForeignKeyConstraints();
+    }
+
+    /**
+     * @param string[] ...$tables
+     *
+     * @deprecated
+     */
     protected function truncate(string ...$tables)
     {
         collect($tables)->each(function (string $table) {
@@ -47,27 +68,6 @@ class DatabaseSeeder extends Seeder
             DB::table($table)->truncate();
             Schema::enableForeignKeyConstraints();
         });
-    }
-
-    protected function truncateMediaTable()
-    {
-        if (Schema::hasTable('media')) {
-            $this->truncate('media');
-        }
-    }
-
-    protected function truncateContentBlocksTable()
-    {
-        if (Schema::hasTable('content_blocks')) {
-            $this->truncate('content_blocks');
-        }
-    }
-
-    protected function truncateActivityTable()
-    {
-        if (Schema::hasTable('activity_log')) {
-            $this->truncate('activity_log');
-        }
     }
 
     protected function clearMediaDirectory()
