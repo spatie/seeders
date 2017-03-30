@@ -42,6 +42,9 @@ class DatabaseSeeder extends Seeder
             ->map(function ($tableProperties) {
                 return get_object_vars($tableProperties)[key($tableProperties)];
             })
+            ->reject(function (string $tableName) {
+                return $tableName === 'migrations';
+            })
             ->each(function (string $tableName) {
                 DB::table($tableName)->truncate();
             });
