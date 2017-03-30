@@ -52,6 +52,11 @@ class DatabaseSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
     }
 
+    /**
+     * @param string[] ...$tables
+     *
+     * @deprecated Deprecated since
+     */
     protected function truncate(string ...$tables)
     {
         collect($tables)->each(function (string $table) {
