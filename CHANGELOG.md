@@ -2,6 +2,9 @@
 
 All notable changes to `seeders` will be documented in this file.
 
+## 4.6.1 - 2017-09-01
+- fix for medialibrary v6
+
 ## 4.6.0 - 2017-03-30
 - Truncate all tables (except migrations) before seeding
 - Deprecated `truncate()` method
