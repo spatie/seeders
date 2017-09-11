@@ -2,6 +2,9 @@
 
 All notable changes to `seeders` will be documented in this file.
 
+## 4.7.0 - 2017-09-11
+- Added `addTags`-method
+
 ## 4.6.1 - 2017-09-01
 - fix for medialibrary v6
 
