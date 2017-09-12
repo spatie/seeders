@@ -86,6 +86,15 @@ class DatabaseSeeder extends Seeder
         $this->addFiles($sourceDirectory, $model, $min, $max, $collectionName);
     }
 
+    protected function addTags(Model $model, $tagType, $min = 1, $max = 1)
+    {
+        $availableTags = Tag::getWithType($tagType);
+
+        $amount = mt_rand($min, $max);
+
+        $model->attachTags($availableTags->random($amount));
+    }
+
     protected function addDownloads(
         HasMedia $model,
         $min = 1,
