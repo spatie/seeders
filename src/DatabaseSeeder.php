@@ -5,6 +5,7 @@ namespace Spatie\Seeders;
 use DB;
 use File;
 use Schema;
+use App\Models\Tag;
 use App\Models\ContentBlock;
 use Illuminate\Database\Seeder;
 use League\Flysystem\Filesystem;
