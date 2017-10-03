@@ -2,6 +2,9 @@
 
 All notable changes to `seeders` will be documented in this file.
 
+## 4.7.2 - 2017-10-03
+- Remove `el()` function requirement
+
 ## 4.7.1 - 2017-09-13
 - Added a forgotten import for the `Tag` model
 

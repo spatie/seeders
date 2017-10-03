@@ -4,6 +4,7 @@ namespace Spatie\Seeders;
 
 use Carbon\Carbon;
 use Faker\Generator;
+use Spatie\HtmlElement\HtmlElement;
 
 class Faker
 {
@@ -61,13 +62,13 @@ class Faker
 
     public function text(): string
     {
-        return el('p.intro', $this->paragraph()).
-            el('h3', $this->sentence()).
-            el('p', $this->paragraph()).
-            el('blockquote', $this->paragraph()).
-            el('h3', $this->sentence()).
-            el('p', $this->paragraph()).
-            el('p', $this->paragraph());
+        return HtmlElement::render('p.intro', $this->paragraph()).
+            HtmlElement::render('h3', $this->sentence()).
+            HtmlElement::render('p', $this->paragraph()).
+            HtmlElement::render('blockquote', $this->paragraph()).
+            HtmlElement::render('h3', $this->sentence()).
+            HtmlElement::render('p', $this->paragraph()).
+            HtmlElement::render('p', $this->paragraph());
     }
 
     public function person($firstName = '', $lastName = ''): array
