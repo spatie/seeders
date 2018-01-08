@@ -57,6 +57,13 @@ class Faker
     {
         $amount = $max ? mt_rand($min, $max) : $min;
 
+        return $this->faker->paragraphs($amount);
+    }
+
+    public function htmlParagraphs(int $min, int $max = 0): string
+    {
+        $amount = $max ? mt_rand($min, $max) : $min;
+
         return '<p>'.implode('</p><p>', $this->faker->paragraphs($amount)).'</p>';
     }
 
