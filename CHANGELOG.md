@@ -2,6 +2,9 @@
 
 All notable changes to `seeders` will be documented in this file.
 
+## 4.8.0 - 2017-02-23
+- Added `htmlParagraphs` Faker method
+
 ## 4.7.2 - 2017-10-03
 - Remove `el()` function requirement
 
@@ -72,7 +75,7 @@ All notable changes to `seeders` will be documented in this file.
 
 ## 3.1.1
 - Fixed a bug where the seed images would be moved instead of copied.
- 
+
 ## 3.1.0
 - Images now seed from a local directory.
 
@@ -92,13 +95,13 @@ All notable changes to `seeders` will be documented in this file.
 - Only truncate media table if it exists.
 
 ## 3.0.0
-- Added support for medialib v3. 
+- Added support for medialib v3.
 
 ##2.4.1
 - Remove support for medialib v3.
 
 ## 2.4.0 (this version does not work)
-- Added support for medialib v3. 
+- Added support for medialib v3.
 
 ## 2.3.0
 - Added superseeder to this package
