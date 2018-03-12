@@ -30,7 +30,7 @@ Other classes are for recurring, specific parts of our application.
 ## Example
 
 ```php
-use Spatie\Seeders\DatabaseSeeder as DatabaseSeeder;
+use Spatie\Seeders\DatabaseSeeder as BaseDatabaseSeeder;
 use Spatie\Seeders\StringSeeder;
 
 class DatabaseSeeder extends BaseDatabaseSeeder
