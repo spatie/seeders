@@ -11,7 +11,7 @@ use Illuminate\Database\Seeder;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Local;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class DatabaseSeeder extends Seeder
 {
