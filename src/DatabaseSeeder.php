@@ -123,6 +123,7 @@ class DatabaseSeeder extends Seeder
                 $model
                     ->addMedia("{$sourceDirectory}/{$file}")
                     ->preservingOriginal()
+                    ->withResponsiveImages()
                     ->toMediaCollection($collectionName);
             });
     }
