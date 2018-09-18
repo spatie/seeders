@@ -3,6 +3,9 @@
 All notable changes to `seeders` will be documented in this file.
 
 
+## 5.0.1 - 2018-09-18
+- Use responsive images when seeding
+
 ## 5.0.0 - 2018-08-20
 - Support `spatie/laravel-medialibrary` v7
 
