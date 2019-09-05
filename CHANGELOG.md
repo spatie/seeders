@@ -3,6 +3,9 @@
 All notable changes to `seeders` will be documented in this file.
 
 
+## 5.2.0 - 2019-09-06
+- Support Laravel 6
+
 ## 5.1.0 - 2018-09-18
 - Use responsive images when seeding
 
