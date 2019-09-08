@@ -1,3 +1,5 @@
+**THIS PACKAGE HAS BEEN ABANDONED**
+
 # Seeders
 
 [![Latest Version on GitHub](https://img.shields.io/github/release/spatie-custom/seeders.svg?style=flat-square)](https://packagist.org/packages/spatie-custom/seeders)
